@@ -1,0 +1,28 @@
+{
+  "name": "style",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.8",
+    "typescript": "^3.9.5",
+    "vercel": "^19.1.0"
+  },
+  "scripts": {
+    "dev": "parcel watch src/index.html",
+    "build": "parcel build src/index.html",
+    "deploy": "yarn run vercel",
+    "release": "parcel build dist/index.html && yarn run vercel --prod"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
+    "eslint": "^7.2.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}
