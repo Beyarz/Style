@@ -1,19 +1,21 @@
 {
   "name": "style",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "main.ts",
   "license": "MIT",
   "dependencies": {
+    "@parcel/types": "^2.0.0-alpha.3",
+    "parcel": "^2.0.0-alpha.3.2",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.26.8",
     "typescript": "^3.9.5",
     "vercel": "^19.1.0"
   },
   "scripts": {
-    "dev": "parcel watch src/index.html",
+    "dev": "parcel src/index.html",
     "build": "parcel build src/index.html",
     "deploy": "yarn run vercel",
-    "release": "parcel build dist/index.html && yarn run vercel --prod"
+    "release": "yarn run vercel --prod"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.2.0",
