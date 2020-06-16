@@ -1,5 +1,5 @@
 import '../styles/main.scss'
-import { generateFakeCards, addRadioEventListeners } from './card'
+import { generateItems, addButtonEventListeners } from './card'
 
-generateFakeCards()
-addRadioEventListeners()
+generateItems()
+addButtonEventListeners()
