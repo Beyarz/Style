@@ -1,9 +1,9 @@
 const unOrderedList: HTMLCollection = document.getElementsByClassName('list-group list-group-horizontal')
 
-function newCard (type: string, clothing: string, id: string): string {
+function newCard (itemSource: URL, id: string): string {
   return `<li class="list-group-item no-border">
             <div class="card">
-              <img src="../assets/${type}/${clothing}" class="card-img-top" alt="Image">
+              <img src="${itemSource}" class="card-img-top" alt="Image">
               <label class="btn btn-light">
                 <input class="btn-group-toggle no-radio" type="radio" name="options" data-id="${id}">Select
               </label>
@@ -24,14 +24,13 @@ export function addButtonEventListeners (): void {
 }
 
 export function generateItems (): void {
-  const clothingType: Array<any> = []
-  const specificClothing: Array<any> = []
-  const idItems: Array<any> = []
+  const itemSource: Array<URL> = []
+  const id: Array<string> = []
 
-  for (let index = 0; index < clothingType.length; index++) {
+  for (let index = 0; index < itemSource.length; index++) {
     const ulListLength: number = unOrderedList.length
     for (let collection = 0; collection < ulListLength; collection++) {
-      unOrderedList.item(collection).innerHTML += newCard(clothingType[index], specificClothing[index], idItems[index])
+      unOrderedList.item(collection).innerHTML += newCard(itemSource[index], id[index])
     }
   }
 }
