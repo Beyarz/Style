@@ -5,7 +5,14 @@ export interface ItemsProperty {
   id: Array<string>
 }
 
-export const items: ItemsProperty = require('../assets/items.json')
-export const unorderedList: HTMLCollection = document.getElementsByClassName('list-group list-group-horizontal')
-export const root: Element = document.getElementById('layout-root')
-export const selectorRadioButton: HTMLCollection = document.getElementsByClassName('no-radio')
+const items: ItemsProperty = require('../assets/items.json')
+const unorderedList: HTMLCollection = document.getElementsByClassName('list-group list-group-horizontal')
+const root: Element = document.getElementById('layout-root')
+const selectorRadioButton: HTMLCollection = document.getElementsByClassName('no-radio')
+
+export {
+  items,
+  unorderedList,
+  root,
+  selectorRadioButton
+}
