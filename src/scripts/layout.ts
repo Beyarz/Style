@@ -6,7 +6,7 @@ import { ItemsProperty, root } from './helper'
  * @returns {string} template
  */
 function newItemsLayout (type: string, stockSize: number): string {
-  const capitalizeType = type[0].toUpperCase() + type.slice(1)
+  const capitalizeType: string = type[0].toUpperCase() + type.slice(1)
 
   return `<h1>
             ${capitalizeType}
@@ -25,7 +25,7 @@ function newItemsLayout (type: string, stockSize: number): string {
 export async function generateLayout (contents: ItemsProperty): Promise<ItemsProperty> {
   const entries = Object.entries(contents)
 
-  entries.forEach(item => {
+  entries.forEach((item: Array<any>): void => {
     const type: string = item[0]
     const stockSize: number = item[1].id.length
     const newItemsNode: Element = document.createElement('div')
