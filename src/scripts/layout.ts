@@ -1,5 +1,4 @@
-import { ItemsProperty } from './helper'
-const root: Element = document.getElementById('layout-root')
+import { ItemsProperty, root } from './helper'
 
 function newItemsLayout (type: string, stockSize: number): string {
   const capitalizeType = type[0].toUpperCase() + type.slice(1)

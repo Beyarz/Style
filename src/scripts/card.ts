@@ -1,10 +1,9 @@
-import { ItemsProperty, items } from './helper'
-const unOrderedList: HTMLCollection = document.getElementsByClassName('list-group list-group-horizontal')
+import { ItemsProperty, items, unorderedList } from './helper'
 
-function newCard (itemSource: URL, id: string): string {
+function newCard (source: URL, id: string): string {
   return `<li class="list-group-item no-border">
             <div class="card">
-              <img src="${itemSource}" class="card-img-top" alt="Image">
+              <img src="${source}" class="card-img-top" alt="Image">
               <label class="btn btn-light">
                 <input class="btn-group-toggle no-radio" type="radio" name="options" data-id="${id}">Select
               </label>
@@ -32,15 +31,15 @@ function generateItems (): void {
   const id: Array<string> = []
 
   for (let index = 0; index < itemSource.length; index++) {
-    const ulListLength: number = unOrderedList.length
+    const ulListLength: number = unorderedList.length
 
     for (let collection = 0; collection < ulListLength; collection++) {
-      unOrderedList.item(collection).innerHTML += newCard(itemSource[index], id[index])
+      unorderedList.item(collection).innerHTML += newCard(itemSource[index], id[index])
     }
   }
 }
 
-export function addButtonEventListeners (): void {
+export async function addButtonEventListeners (): Promise<void> {
   const selectorRadioButton: HTMLCollection = document.getElementsByClassName('no-radio')
 
   for (let index = 0; index < selectorRadioButton.length; index++) {
