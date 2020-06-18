@@ -1,5 +1,8 @@
 import '../styles/main.scss'
-import { generateItems, addButtonEventListeners } from './card'
+import { ItemsProperty } from './helper'
+import { addButtonEventListeners } from './card'
+import { generateLayout } from './layout'
+const items: ItemsProperty = require('../assets/items.json')
 
-generateItems()
+generateLayout(items)
 addButtonEventListeners()

@@ -1,17 +1,4 @@
 {
-  "pants": {
-    "src": [
-      "https",
-      "https",
-      "https"
-    ],
-    "id": [
-      "id",
-      "id",
-      "id"
-    ]
-  },
-
   "jackets": {
     "src": [
       "https",
@@ -25,15 +12,11 @@
     ]
   },
 
-  "socks": {
+  "shoes": {
     "src": [
-      "https",
-      "https",
       "https"
     ],
     "id": [
-      "id",
-      "id",
       "id"
     ]
   }
