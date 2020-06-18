@@ -1,7 +1,9 @@
-import '../styles/main.scss'
-import { items } from './helper'
-import { addButtonEventListeners } from './card'
+import { items, ItemsProperty } from './helper'
+import { addButtonEventListeners, displayItems } from './card'
 import { generateLayout } from './layout'
 
 generateLayout(items)
-addButtonEventListeners()
+  .then((items: ItemsProperty): void => { displayItems(items) })
+  .catch((reason: any) => { console.log(reason) })
+
+addButtonEventListeners().catch((reason: any) => { console.log(reason) })
