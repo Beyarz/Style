@@ -1,4 +1,4 @@
-import { ItemsProperty, selectorRadioButton } from './helper'
+import { ItemsProperty } from './helper'
 
 /**
  * @param {string} source
@@ -49,20 +49,4 @@ export function displayItems (contents: ItemsProperty): void {
       generateItems(type, srcProperty[index], idProperty[index])
     }
   })
-}
-
-/**
- * @export
- * @returns {Promise<void>} only catches error
- */
-export async function addButtonEventListeners (): Promise<void> {
-  for (let index = 0; index < selectorRadioButton.length; index++) {
-    const radio: Element = selectorRadioButton.item(index)
-
-    radio.addEventListener('click', (event: Event) => {
-      const chosenItemId: Event = event.target.dataset.id
-      const chosenItemSrc: Event = event.target.dataset.src
-      console.log(event)
-    })
-  }
 }

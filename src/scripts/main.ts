@@ -1,6 +1,7 @@
+import { displayItems } from './card'
 import { items, ItemsProperty } from './helper'
-import { addButtonEventListeners, displayItems } from './card'
 import { generateLayout } from './layout'
+import addButtonEventListeners from './selection'
 
 generateLayout(items)
   .then((items: ItemsProperty): void => { displayItems(items) })
