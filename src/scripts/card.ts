@@ -19,14 +19,23 @@ function newCard (itemSource: URL, id: string): string {
 
 function structureItems (contents: ItemsProperty): void {
   const entries = Object.entries(contents)
-  const entriesArrayLength = entries.length
 
   // entries[X] iterate over each item
   // entries[X][X+1] properties
-  const firstItem: Array<string> = entries[0]
-  const firstItemProperty: ItemsProperty = entries[0][1]
-  const firstItemPropertySrc: Object = firstItemProperty.src
-  const firstItemPropertyId: Object = firstItemProperty.id
+  // const firstItem: Array<string> = entries[0]
+  // const firstItemProperty: ItemsProperty = entries[0][1]
+  // const firstItemPropertySrc: Object = firstItemProperty.src
+  // const firstItemPropertyId: Object = firstItemProperty.id
+
+  entries.forEach(item => {
+    const type: string = item[0]
+    const srcProperty: Array<string> = item[1].src
+    const idProperty: Array<string> = item[1].id
+
+    for (let index = 0; index < srcProperty.length; index++) {
+      console.log(type, srcProperty[index], idProperty[index])
+    }
+  })
 }
 
 structureItems(items)

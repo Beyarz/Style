@@ -1,16 +1,40 @@
 {
   "pants": {
-    "src": ["https", "https", "https"],
-    "id": ["id", "id", "id"]
+    "src": [
+      "https",
+      "https",
+      "https"
+    ],
+    "id": [
+      "id",
+      "id",
+      "id"
+    ]
   },
 
   "jackets": {
-    "src": ["https", "https", "https"],
-    "id": ["id", "id", "id"]
+    "src": [
+      "https",
+      "https",
+      "https"
+    ],
+    "id": [
+      "id",
+      "id",
+      "id"
+    ]
   },
 
   "socks": {
-    "src": ["https", "https", "https"],
-    "id": ["id", "id", "id"]
+    "src": [
+      "https",
+      "https",
+      "https"
+    ],
+    "id": [
+      "id",
+      "id",
+      "id"
+    ]
   }
 }
