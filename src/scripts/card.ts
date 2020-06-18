@@ -60,8 +60,9 @@ export async function addButtonEventListeners (): Promise<void> {
     const radio: Element = selectorRadioButton.item(index)
 
     radio.addEventListener('click', (event: Event) => {
-      const chosenItem: Event = event.target.dataset.id
-      // console.log(chosenItem)
+      const chosenItemId: Event = event.target.dataset.id
+      const chosenItemSrc: Event = event.target.dataset.src
+      console.log(event)
     })
   }
 }

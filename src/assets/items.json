@@ -1,23 +1,23 @@
 {
   "jackets": {
     "src": [
-      "https",
-      "https",
-      "https"
+      "https1",
+      "https2"
     ],
     "id": [
-      "id",
-      "id",
-      "id"
+      "id1",
+      "id2"
     ]
   },
 
   "shoes": {
     "src": [
-      "https"
+      "https1",
+      "https2"
     ],
     "id": [
-      "id"
+      "id1",
+      "id2"
     ]
   }
 }
