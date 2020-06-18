@@ -1,6 +1,5 @@
-import { ItemsProperty } from './helper'
+import { ItemsProperty, items } from './helper'
 const unOrderedList: HTMLCollection = document.getElementsByClassName('list-group list-group-horizontal')
-const items: ItemsProperty = require('../assets/items.json')
 
 function newCard (itemSource: URL, id: string): string {
   return `<li class="list-group-item no-border">
