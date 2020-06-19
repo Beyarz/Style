@@ -18,7 +18,7 @@ export default async function addButtonSelectionListeners (): Promise<void> {
         .parentElement.parentElement.parentElement
         .cloneNode(true)
 
-      // Remove previous selected item from the same category
+      // Remove previously selected item from the same type
       const chosenType: EventTarget = event.target.dataset.type
       selectedItems.childNodes.forEach(element => {
         if (element.dataset.type === chosenType) {
@@ -26,6 +26,8 @@ export default async function addButtonSelectionListeners (): Promise<void> {
         }
       })
 
+      const labelTag = 3
+      chosenCard.lastChild.childNodes.item(labelTag).remove()
       selectedItems.appendChild(chosenCard)
     })
   }
