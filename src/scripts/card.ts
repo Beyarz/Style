@@ -15,7 +15,7 @@ class Card {
    * @private
    * @param {string} [src=this.src]
    * @param {string} [id=this.id]
-   * @returns {string}
+   * @returns {string} template
    * @memberof Card
    */
   private create (src: string = this.src, id: string = this.id): string {
@@ -26,7 +26,6 @@ class Card {
               </label>
             </div>`
   }
-
 
   /**
    * @param {string} [type=this.type]

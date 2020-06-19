@@ -14,8 +14,8 @@ export default async function addButtonSelectionListeners (): Promise<void> {
 
     radio.addEventListener('click', (event: Event): void => {
       const chosenId: EventTarget = event.target.dataset.id
-      const chosenCard: Node = document.querySelectorAll(`[data-id=${chosenId}]`)
-        .item(0).parentElement.parentElement.parentElement
+      const chosenCard: Node = document.querySelector(`[data-id=${chosenId}]`)
+        .parentElement.parentElement.parentElement
         .cloneNode(true)
 
       selectedItems.appendChild(chosenCard)
