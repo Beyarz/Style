@@ -10,16 +10,16 @@ interface EventTarget {
  */
 export default async function addButtonSelectionListeners (): Promise<void> {
   for (let index = 0; index < selectorRadioButton.length; index++) {
-    const radio: Element = selectorRadioButton.item(index)
+    const selectButton: Element = selectorRadioButton.item(index)
 
-    radio.addEventListener('click', (event: Event): void => {
+    selectButton.addEventListener('click', (event: Event): void => {
       const chosenId: EventTarget = event.target.dataset.id
       const chosenCard: Node = document.querySelector(`[data-id=${chosenId}]`)
         .parentElement.parentElement.parentElement
         .cloneNode(true)
 
+      console.log(chosenId)
       selectedItems.appendChild(chosenCard)
-      // console.log(chosenCard)
     })
   }
 }

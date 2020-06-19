@@ -18,11 +18,11 @@ class Card {
    * @returns {string} template
    * @memberof Card
    */
-  private create (src: string = this.src, id: string = this.id): string {
+  private createByTemplate (src: string = this.src, id: string = this.id): string {
     return `<div class="card">
               <img src="${src}" class="card-img-top" alt="Image">
               <label class="btn btn-light mt-4">
-                <input class="btn-group-toggle no-radio" type="radio" name="options" data-id="${id}">Select
+                <input class="btn-group-toggle no-radio" type="radio" data-id="${id}">Select
               </label>
             </div>`
   }
@@ -33,7 +33,7 @@ class Card {
    */
   public display (type: string = this.type): void {
     const typeLayout: Element = document.getElementById(type)
-    const typeItem: string = this.create()
+    const typeItem: string = this.createByTemplate()
     const typeNode: Element = document.createElement('li')
 
     const classes: Array<string> = ['list-group-item', 'no-border', 'mb-3']
@@ -53,14 +53,16 @@ class Card {
 export function produceCards (contents: ItemsProperty): void {
   const entries = Object.entries(contents)
 
+  //* The first index of the item array is the type
+  //* The second index is an object with src & id property
   entries.forEach(item => {
     const type: string = item[0]
     const srcProperty: Array<string> = item[1].src
     const idProperty: Array<string> = item[1].id
 
     for (let index = 0; index < srcProperty.length; index++) {
-      const newCard = new Card(type, srcProperty[index], idProperty[index])
-      newCard.display()
+      const card = new Card(type, srcProperty[index], idProperty[index])
+      card.display()
     }
   })
 }

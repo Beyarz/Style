@@ -25,7 +25,7 @@ function newItemsLayout (type: string, stockSize: number): string {
 export async function generateLayout (contents: ItemsProperty): Promise<ItemsProperty> {
   const entries = Object.entries(contents)
 
-  entries.forEach((item: Array<any>): void => {
+  entries.forEach((item: Array<ItemsProperty>): void => {
     const type: string = item[0]
     const stockSize: number = item[1].id.length
     const newItemsNode: Element = document.createElement('div')
