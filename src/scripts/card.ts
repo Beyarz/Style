@@ -18,11 +18,11 @@ class Card {
    * @returns {string} template
    * @memberof Card
    */
-  private createByTemplate (src: string = this.src, id: string = this.id): string {
+  private createByTemplate (type: string = this.type, src: string = this.src, id: string = this.id): string {
     return `<div class="card">
               <img src="${src}" class="card-img-top" alt="Image">
               <label class="btn btn-light mt-4">
-                <input class="btn-group-toggle no-radio" type="radio" data-id="${id}">Select
+                <input class="btn-group-toggle no-radio" type="radio" data-type="${type}" data-id="${id}">Select
               </label>
             </div>`
   }
@@ -41,6 +41,7 @@ class Card {
       typeNode.classList.add(element)
     })
 
+    typeNode.dataset.type = type
     typeNode.innerHTML = typeItem
     typeLayout.appendChild(typeNode)
   }

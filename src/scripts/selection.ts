@@ -1,7 +1,7 @@
 import { selectorRadioButton, selectedItems } from './helper'
 
 interface EventTarget {
-  dataset: string
+  dataset: string,
 }
 
 /**
@@ -18,7 +18,14 @@ export default async function addButtonSelectionListeners (): Promise<void> {
         .parentElement.parentElement.parentElement
         .cloneNode(true)
 
-      console.log(chosenId)
+      // Remove previous selected item from the same category
+      const chosenType: EventTarget = event.target.dataset.type
+      selectedItems.childNodes.forEach(element => {
+        if (element.dataset.type === chosenType) {
+          element.remove()
+        }
+      })
+
       selectedItems.appendChild(chosenCard)
     })
   }
