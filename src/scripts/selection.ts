@@ -1,5 +1,9 @@
 import { selectorRadioButton, selectedItems } from './helper'
 
+interface EventTarget {
+  dataset: string
+}
+
 /**
  * @export
  * @returns {Promise<void>}
@@ -9,7 +13,7 @@ export default async function addButtonSelectionListeners (): Promise<void> {
     const radio: Element = selectorRadioButton.item(index)
 
     radio.addEventListener('click', (event: Event): void => {
-      const chosenId: Event = event.target.dataset.id
+      const chosenId: EventTarget = event.target.dataset.id
       const chosenCard: Node = document.querySelectorAll(`[data-id=${chosenId}]`)
         .item(0).parentElement.parentElement.parentElement
         .cloneNode(true)
