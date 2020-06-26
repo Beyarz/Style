@@ -10,11 +10,13 @@ const unorderedList: HTMLCollection = document.getElementsByClassName('list-grou
 const root: Element = document.getElementById('layout-root')
 const selectorRadioButton: HTMLCollection = document.getElementsByClassName('no-radio')
 const selectedItems: Element = document.getElementById('selected-items')
+const combinationLead: Element = document.getElementById('combination-lead')
 
 export {
   items,
   unorderedList,
   root,
   selectorRadioButton,
-  selectedItems
+  selectedItems,
+  combinationLead
 }

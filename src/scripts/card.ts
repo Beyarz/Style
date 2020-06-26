@@ -22,7 +22,7 @@ class Card {
     return `<div class="card">
               <img src="${src}" class="card-img-top" alt="Image">
               <label class="btn btn-light mt-4">
-                <input class="btn-group-toggle no-radio" type="radio" data-type="${type}" data-id="${id}">Select
+                <input class="btn-group-toggle no-radio" type="radio" data-type="${type}" data-id="${id}" data-src="${src}">Select
               </label>
             </div>`
   }

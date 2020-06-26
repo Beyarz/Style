@@ -1,7 +1,12 @@
-import { selectorRadioButton, selectedItems } from './helper'
+import { selectorRadioButton, selectedItems, combinationLead } from './helper'
+import { currentChosenStyle } from './share'
 
-interface EventTarget {
-  dataset: string,
+interface EventTargetDataset extends EventTarget {
+  dataset: {
+    type: string,
+    id: string,
+    src: string
+  }
 }
 
 /**
@@ -20,6 +25,7 @@ async function addPublishButton (): Promise<void> {
   publishButton.textContent = 'Publish'
 
   if (selectedItems.childNodes.length !== 0 && document.getElementById(publishButtonId) === null) {
+    combinationLead.remove()
     selectedItems.parentElement.parentElement.appendChild(publishButton)
   }
 }
@@ -33,18 +39,24 @@ export default async function addButtonSelectionListeners (): Promise<void> {
     const selectButton: Element = selectorRadioButton.item(index)
 
     selectButton.addEventListener('click', (event: Event): void => {
-      const chosenId: EventTarget = event.target.dataset.id
+      const targetEvent: EventTargetDataset = event.target
+
+      const chosenType: string = targetEvent.dataset.type
+      const chosenId: string = targetEvent.dataset.id
+      const chosenSrc: string = targetEvent.dataset.src
+
       const chosenCard: Node = document.querySelector(`[data-id=${chosenId}]`)
         .parentElement.parentElement.parentElement
         .cloneNode(true)
 
       // Remove previously selected item from the same type
-      const chosenType: EventTarget = event.target.dataset.type
       selectedItems.childNodes.forEach(element => {
         if (element.dataset.type === chosenType) {
           element.remove()
         }
       })
+
+      currentChosenStyle({ chosenType, chosenSrc, chosenId })
 
       const labelTag: number = 3
       chosenCard.lastChild.childNodes.item(labelTag).remove()
