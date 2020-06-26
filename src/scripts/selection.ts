@@ -25,8 +25,12 @@ async function addPublishButton (): Promise<void> {
   publishButton.textContent = 'Publish'
 
   if (selectedItems.childNodes.length !== 0 && document.getElementById(publishButtonId) === null) {
-    combinationLead.remove()
     selectedItems.parentElement.parentElement.appendChild(publishButton)
+
+    //* A weird bug occurs when loading the page with dev tool open, the paragraph doesn't fully render
+    if (combinationLead !== null) {
+      combinationLead.remove()
+    }
   }
 }
 
@@ -49,6 +53,8 @@ export default async function addButtonSelectionListeners (): Promise<void> {
         .parentElement.parentElement.parentElement
         .cloneNode(true)
 
+      const labelTagIndex: number = 3
+
       // Remove previously selected item from the same type
       selectedItems.childNodes.forEach(element => {
         if (element.dataset.type === chosenType) {
@@ -56,13 +62,10 @@ export default async function addButtonSelectionListeners (): Promise<void> {
         }
       })
 
-      currentChosenStyle({ chosenType, chosenSrc, chosenId })
-
-      const labelTag: number = 3
-      chosenCard.lastChild.childNodes.item(labelTag).remove()
+      chosenCard.lastChild.childNodes.item(labelTagIndex).remove()
       selectedItems.appendChild(chosenCard)
-
       addPublishButton()
+      currentChosenStyle({ chosenType, chosenSrc, chosenId })
     })
   }
 }
