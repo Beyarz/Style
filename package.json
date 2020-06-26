@@ -9,7 +9,7 @@
     "parcel-bundler": "^1.12.4",
     "sass": "^1.26.8",
     "typescript": "^3.9.5",
-    "vercel": "^19.1.0"
+    "vercel": "^19.1.1"
   },
   "scripts": {
     "dev": "parcel src/index.html",
