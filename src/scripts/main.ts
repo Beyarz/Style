@@ -1,7 +1,8 @@
 import { produceCards } from './card'
-import { items, ItemsPropertyList, Suggestion } from './helper'
+import { items, ItemsPropertyList } from './helper'
 import { generateLayout } from './layout'
 import addButtonSelectionListeners from './selection'
+// import { suggestedCollection } from './share'
 
 generateLayout(items)
   .then((items: ItemsPropertyList): void => { produceCards(items) })
@@ -9,5 +10,3 @@ generateLayout(items)
     addButtonSelectionListeners()
   })
   .catch((reason: string): void => { console.log(reason) })
-
-const suggestedCollection: Suggestion = null

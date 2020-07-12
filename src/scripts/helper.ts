@@ -11,8 +11,7 @@ export interface ItemsProperty {
 }
 
 export interface Suggestion {
-  type: string,
-  selected: {
+  type?: {
     id: string,
     src: string
   }
@@ -24,7 +23,6 @@ const root: Element = document.getElementById('layout-root')
 const selectorRadioButton: HTMLCollection = document.getElementsByClassName('no-radio')
 const selectedItems: Element = document.getElementById('selected-items')
 const combinationLead: Element = document.getElementById('combination-lead')
-
 export {
   items,
   unorderedList,

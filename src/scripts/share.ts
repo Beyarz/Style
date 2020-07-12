@@ -1,20 +1,44 @@
 import { ItemsProperty, Suggestion } from './helper'
 
-export function currentlyPickedStyle (suggestedType: string, suggestedStyle: ItemsProperty): void {
-  // const stringifiedStyle: string = JSON.stringify(suggestedStyle)
-  // const encodedStyle: string = encodeURI(btoa(stringifiedStyle))
-  // window.location.hash = encodedStyle
-  // const hash: string = encodedStyle
+const suggestedCollection: Suggestion = {}
 
-  const type = suggestedType
-  const selected = {
-    id: suggestedStyle.id,
-    src: suggestedStyle.src
+/**
+ * Store the picked item
+ * @param {string} type
+ * @param {ItemsProperty} style
+ */
+function currentlyPickedStyle (type: string, style: ItemsProperty): void {
+  suggestedCollection[type] = {
+    id: style.id,
+    src: style.src
   }
-  const assembleSuggestion: Suggestion = { type, selected }
-  console.log(assembleSuggestion)
+  encodeStyle(suggestedCollection)
+  console.log(suggestedCollection)
 }
 
-export function PreSelectedStyleExist (): boolean {
+/**
+ * Encode the collection
+ * @param {Suggestion} collection
+ */
+function encodeStyle (collection: Suggestion): void {
+  const stringifiedStyle: string = JSON.stringify(collection)
+  const encodedStyle: string = encodeURI(btoa(stringifiedStyle))
+  const hash: string = encodedStyle
+
+  window.location.hash = encodedStyle
+  console.log(hash)
+}
+
+/**
+ * See if visitor already picked a style
+ * @returns {boolean}
+ */
+function preSelectedStyleExist (): boolean {
   return window.location.hash === ''
+}
+
+export {
+  suggestedCollection,
+  currentlyPickedStyle,
+  preSelectedStyleExist
 }
