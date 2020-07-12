@@ -1,11 +1,24 @@
 import '../styles/main.scss'
 
-export interface ItemsProperty {
+export interface ItemsPropertyList {
   src: Array<string>,
   id: Array<string>
 }
 
-const items: ItemsProperty = require('../assets/items.json')
+export interface ItemsProperty {
+  src: string,
+  id: string
+}
+
+export interface Suggestion {
+  type: string,
+  selected: {
+    id: string,
+    src: string
+  }
+}
+
+const items: ItemsPropertyList = require('../assets/items.json')
 const unorderedList: HTMLCollection = document.getElementsByClassName('list-group list-group-horizontal')
 const root: Element = document.getElementById('layout-root')
 const selectorRadioButton: HTMLCollection = document.getElementsByClassName('no-radio')

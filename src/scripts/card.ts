@@ -1,4 +1,4 @@
-import { ItemsProperty } from './helper'
+import { ItemsPropertyList } from './helper'
 
 class Card {
   type: string
@@ -13,9 +13,10 @@ class Card {
 
   /**
    * @private
+   * @param {string} [type=this.type]
    * @param {string} [src=this.src]
    * @param {string} [id=this.id]
-   * @returns {string} template
+   * @returns {string}
    * @memberof Card
    */
   private createByTemplate (type: string = this.type, src: string = this.src, id: string = this.id): string {
@@ -49,9 +50,9 @@ class Card {
 
 /**
  * @export
- * @param {ItemsProperty} contents
+ * @param {ItemsPropertyList} contents
  */
-export function produceCards (contents: ItemsProperty): void {
+export function produceCards (contents: ItemsPropertyList): void {
   const entries = Object.entries(contents)
 
   //* The first index of the item array is the type

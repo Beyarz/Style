@@ -1,5 +1,5 @@
 import { selectorRadioButton, selectedItems, combinationLead } from './helper'
-import { currentChosenStyle } from './share'
+import { currentlyPickedStyle } from './share'
 
 interface TargetDataset extends EventTarget {
   dataset?: {
@@ -46,10 +46,10 @@ export default async function addButtonSelectionListeners (): Promise<void> {
       const targetEvent: TargetDataset = event.target
 
       const chosenType: string = targetEvent.dataset.type
-      const chosenId: string = targetEvent.dataset.id
-      const chosenSrc: string = targetEvent.dataset.src
+      const src: string = targetEvent.dataset.src
+      const id: string = targetEvent.dataset.id
 
-      const chosenCard: Node = document.querySelector(`[data-id=${chosenId}]`)
+      const chosenCard: Node = document.querySelector(`[data-id=${id}]`)
         .parentElement.parentElement.parentElement
         .cloneNode(true)
 
@@ -65,7 +65,7 @@ export default async function addButtonSelectionListeners (): Promise<void> {
       chosenCard.lastChild.childNodes.item(labelTagIndex).remove()
       selectedItems.appendChild(chosenCard)
       addPublishButton()
-      currentChosenStyle({ chosenType, chosenSrc, chosenId })
+      currentlyPickedStyle(chosenType, { src, id })
     })
   }
 }

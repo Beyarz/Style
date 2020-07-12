@@ -1,4 +1,4 @@
-import { ItemsProperty, root } from './helper'
+import { ItemsPropertyList, root } from './helper'
 
 /**
  * @param {string} type
@@ -20,10 +20,10 @@ function createLayout (type: string, stockSize: number): string {
 
 /**
  * @export
- * @param {ItemsProperty} contents
- * @returns {Promise<ItemsProperty>} interface
+ * @param {ItemsPropertyList} contents
+ * @returns {Promise<ItemsPropertyList>} interface
  */
-export async function generateLayout (contents: ItemsProperty): Promise<ItemsProperty> {
+export async function generateLayout (contents: ItemsPropertyList): Promise<ItemsPropertyList> {
   const entries = Object.entries(contents)
 
   entries.forEach((item: Array<any>): void => {

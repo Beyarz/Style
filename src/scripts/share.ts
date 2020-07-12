@@ -1,9 +1,20 @@
-export function currentChosenStyle (suggestedStyle: object): void {
-  const stringifiedStyle: string = JSON.stringify(suggestedStyle)
-  const encodedStyle = encodeURI(btoa(stringifiedStyle))
-  window.location.hash = encodedStyle
+import { ItemsProperty, Suggestion } from './helper'
 
-  //! Filter out special characters from window.location.hash
-  const hash = window.location.hash === '' ? encodedStyle : window.location.hash.replace(/#/g, '')
-  console.log(hash)
+export function currentlyPickedStyle (suggestedType: string, suggestedStyle: ItemsProperty): void {
+  // const stringifiedStyle: string = JSON.stringify(suggestedStyle)
+  // const encodedStyle: string = encodeURI(btoa(stringifiedStyle))
+  // window.location.hash = encodedStyle
+  // const hash: string = encodedStyle
+
+  const type = suggestedType
+  const selected = {
+    id: suggestedStyle.id,
+    src: suggestedStyle.src
+  }
+  const assembleSuggestion: Suggestion = { type, selected }
+  console.log(assembleSuggestion)
+}
+
+export function PreSelectedStyleExist (): boolean {
+  return window.location.hash === ''
 }
