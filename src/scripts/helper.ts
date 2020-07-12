@@ -17,13 +17,14 @@ export interface Suggestion {
   }
 }
 
-const items: ItemsPropertyList = require('../assets/items.json')
-const unorderedList: HTMLCollection = document.getElementsByClassName('list-group list-group-horizontal')
-const root: Element = document.getElementById('layout-root')
-const selectorRadioButton: HTMLCollection = document.getElementsByClassName('no-radio')
-const selectedItems: Element = document.getElementById('selected-items')
-const combinationLead: Element = document.getElementById('combination-lead')
-export {
+export const items: ItemsPropertyList = require('../assets/items.json')
+export const unorderedList: HTMLCollection = document.getElementsByClassName('list-group list-group-horizontal')
+export const root: Element = document.getElementById('layout-root')
+export const selectorRadioButton: HTMLCollection = document.getElementsByClassName('no-radio')
+export const selectedItems: Element = document.getElementById('selected-items')
+export const combinationLead: Element = document.getElementById('combination-lead')
+
+module.exports = {
   items,
   unorderedList,
   root,

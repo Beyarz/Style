@@ -68,3 +68,7 @@ export function produceCards (contents: ItemsPropertyList): void {
     }
   })
 }
+
+module.exports = {
+  produceCards
+}

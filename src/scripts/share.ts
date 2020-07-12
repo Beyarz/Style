@@ -1,13 +1,14 @@
 import { ItemsProperty, Suggestion } from './helper'
 
-const suggestedCollection: Suggestion = {}
+export const suggestedCollection: Suggestion = {}
 
 /**
  * Store the picked item
+ * @exports
  * @param {string} type
  * @param {ItemsProperty} style
  */
-function currentlyPickedStyle (type: string, style: ItemsProperty): void {
+export function currentlyPickedStyle (type: string, style: ItemsProperty): void {
   suggestedCollection[type] = {
     id: style.id,
     src: style.src
@@ -31,13 +32,14 @@ function encodeStyle (collection: Suggestion): void {
 
 /**
  * See if visitor already picked a style
+ * @exports
  * @returns {boolean}
  */
-function preSelectedStyleExist (): boolean {
+export function preSelectedStyleExist (): boolean {
   return window.location.hash === ''
 }
 
-export {
+module.exports = {
   suggestedCollection,
   currentlyPickedStyle,
   preSelectedStyleExist

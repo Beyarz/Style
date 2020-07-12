@@ -38,3 +38,7 @@ export async function generateLayout (contents: ItemsPropertyList): Promise<Item
 
   return contents
 }
+
+module.exports = {
+  generateLayout
+}

@@ -69,3 +69,8 @@ export default async function addButtonSelectionListeners (): Promise<void> {
     })
   }
 }
+
+module.exports = {
+  addPublishButton,
+  addButtonSelectionListeners
+}
