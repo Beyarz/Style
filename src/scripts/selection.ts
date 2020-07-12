@@ -1,8 +1,8 @@
 import { selectorRadioButton, selectedItems, combinationLead } from './helper'
 import { currentChosenStyle } from './share'
 
-interface EventTargetDataset extends EventTarget {
-  dataset: {
+interface TargetDataset extends EventTarget {
+  dataset?: {
     type: string,
     id: string,
     src: string
@@ -43,7 +43,7 @@ export default async function addButtonSelectionListeners (): Promise<void> {
     const selectButton: Element = selectorRadioButton.item(index)
 
     selectButton.addEventListener('click', (event: Event): void => {
-      const targetEvent: EventTargetDataset = event.target
+      const targetEvent: TargetDataset = event.target
 
       const chosenType: string = targetEvent.dataset.type
       const chosenId: string = targetEvent.dataset.id
@@ -56,7 +56,7 @@ export default async function addButtonSelectionListeners (): Promise<void> {
       const labelTagIndex: number = 3
 
       // Remove previously selected item from the same type
-      selectedItems.childNodes.forEach(element => {
+      selectedItems.childNodes.forEach((element: Element) => {
         if (element.dataset.type === chosenType) {
           element.remove()
         }

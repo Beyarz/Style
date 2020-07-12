@@ -9,7 +9,7 @@ function createLayout (type: string, stockSize: number): string {
   const firstLetter: number = 0
   const capitalizeType: string = type[firstLetter].toUpperCase() + type.slice(firstLetter + 1)
 
-  return `<h1>
+  return `<h1 class="text-muted">
             ${capitalizeType}
             <span class="badge badge-primary badge-pill align-middle span-font-size">${stockSize}</span>
           </h1>
