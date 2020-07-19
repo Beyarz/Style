@@ -23,7 +23,7 @@ function createLayout (type: string, stockSize: number): string {
  * @param {ItemsPropertyList} contents
  * @returns {Promise<ItemsPropertyList>} interface
  */
-export async function generateLayout (contents: ItemsPropertyList): Promise<ItemsPropertyList> {
+async function generateLayout (contents: ItemsPropertyList): Promise<ItemsPropertyList> {
   const entries = Object.entries(contents)
 
   entries.forEach((item: Array<any>): void => {
@@ -39,6 +39,6 @@ export async function generateLayout (contents: ItemsPropertyList): Promise<Item
   return contents
 }
 
-module.exports = {
+export {
   generateLayout
 }

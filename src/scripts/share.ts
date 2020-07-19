@@ -1,6 +1,6 @@
-import { ItemsProperty, Suggestion } from './helper'
+import { ItemsProperty, Suggestion, sharedUrlId } from './helper'
 
-export const suggestedCollection: Suggestion = {}
+const suggestedCollection: Suggestion = {}
 
 /**
  * Store the picked item
@@ -8,13 +8,13 @@ export const suggestedCollection: Suggestion = {}
  * @param {string} type
  * @param {ItemsProperty} style
  */
-export function currentlyPickedStyle (type: string, style: ItemsProperty): void {
+function currentlyPickedStyle (type: string, style: ItemsProperty): void {
   suggestedCollection[type] = {
     id: style.id,
     src: style.src
   }
   encodeStyle(suggestedCollection)
-  console.log(suggestedCollection)
+  console.log('Parsed: ', suggestedCollection)
 }
 
 /**
@@ -27,7 +27,14 @@ function encodeStyle (collection: Suggestion): void {
   const hash: string = encodedStyle
 
   window.location.hash = encodedStyle
-  console.log(hash)
+  applyPreSelectedStyle(hash)
+  editSharedUrl(hash).catch(error => { console.log(error) })
+  console.log('Encoded: ', hash)
+}
+
+function applyPreSelectedStyle (encodedCollection: string) {
+  const decodedStyle: string = atob(encodedCollection)
+  console.log('Decoded: ', decodedStyle)
 }
 
 /**
@@ -35,11 +42,24 @@ function encodeStyle (collection: Suggestion): void {
  * @exports
  * @returns {boolean}
  */
-export function preSelectedStyleExist (): boolean {
+function preSelectedStyleExist (): boolean {
   return window.location.hash === ''
 }
 
-module.exports = {
+/**
+ * Edit the url the user should share
+ * @param {string} url
+ * @returns {Promise<void>}
+ */
+async function editSharedUrl (url: string): Promise<void> {
+  const sharedUrl: Element = document.getElementById(sharedUrlId)
+  const formattedUrl: string = window.location.origin + '/' + '#' + url
+
+  sharedUrl.setAttribute('href', formattedUrl)
+  sharedUrl.textContent = 'Share me!'
+}
+
+export {
   suggestedCollection,
   currentlyPickedStyle,
   preSelectedStyleExist

@@ -6,7 +6,8 @@
     "rootDir": "./src",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
     "removeComments": true,                   /* Do not emit comments to output. */
     "strict": false,                          /* Enable all strict type-checking options. */
-    "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
+    "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
+    "resolveJsonModule": false                 /* Allow importing json */
   },
   "baseUrl": "./src",
   "paths": {

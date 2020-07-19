@@ -52,7 +52,7 @@ class Card {
  * @export
  * @param {ItemsPropertyList} contents
  */
-export function produceCards (contents: ItemsPropertyList): void {
+function produceCards (contents: ItemsPropertyList): void {
   const entries = Object.entries(contents)
 
   //* The first index of the item array is the type
@@ -69,6 +69,6 @@ export function produceCards (contents: ItemsPropertyList): void {
   })
 }
 
-module.exports = {
+export {
   produceCards
 }

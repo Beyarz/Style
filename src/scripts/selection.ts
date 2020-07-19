@@ -1,4 +1,4 @@
-import { selectorRadioButton, selectedItems, combinationLead } from './helper'
+import { selectorRadioButton, selectedItems, combinationLead, publishSectionId, sharedUrlId } from './helper'
 import { currentlyPickedStyle } from './share'
 
 interface TargetDataset extends EventTarget {
@@ -12,26 +12,28 @@ interface TargetDataset extends EventTarget {
 /**
  * @returns {Promise<void>}
  */
-async function addPublishButton (): Promise<void> {
-  const publishButton: Element = document.createElement('button')
-  const publishButtonClassList: Array<string> = ['btn', 'btn-secondary', 'btn-lg', 'btn-block', 'mb-3', 'mt-3']
+async function addPublishSection (): Promise<void> {
+  const publishSection: Element = document.createElement('blockquote')
+  const publishSectionClassList: Array<string> = ['blockquote', 'text-center', 'mb-3', 'mt-3', 'container']
 
-  publishButtonClassList.forEach((element: string) => {
-    publishButton.classList.add(element)
+  publishSectionClassList.forEach((element: string) => {
+    publishSection.classList.add(element)
   })
 
-  const publishButtonId: string = 'publish-button'
-  publishButton.setAttribute('id', publishButtonId)
-  publishButton.textContent = 'Publish'
+  publishSection.setAttribute('id', publishSectionId)
 
-  if (selectedItems.childNodes.length !== 0 && document.getElementById(publishButtonId) === null) {
-    selectedItems.parentElement.parentElement.appendChild(publishButton)
+  if (selectedItems.childNodes.length !== 0 && document.getElementById(publishSectionId) === null) {
+    selectedItems.parentElement.parentElement.appendChild(publishSection)
 
     //* A weird bug occurs when loading the page with dev tool open, the paragraph doesn't fully render
     if (combinationLead !== null) {
       combinationLead.remove()
     }
   }
+
+  const sharedUrl: Element = document.createElement('a')
+  sharedUrl.setAttribute('id', sharedUrlId)
+  publishSection.appendChild(sharedUrl)
 }
 
 /**
@@ -64,13 +66,13 @@ export default async function addButtonSelectionListeners (): Promise<void> {
 
       chosenCard.lastChild.childNodes.item(labelTagIndex).remove()
       selectedItems.appendChild(chosenCard)
-      addPublishButton()
+      addPublishSection()
       currentlyPickedStyle(chosenType, { src, id })
     })
   }
 }
 
-module.exports = {
-  addPublishButton,
+export {
+  addPublishSection,
   addButtonSelectionListeners
 }
