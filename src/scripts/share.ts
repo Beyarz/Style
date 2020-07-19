@@ -14,7 +14,6 @@ function currentlyPickedStyle (type: string, style: ItemsProperty): void {
     src: style.src
   }
   encodeStyle(suggestedCollection)
-  console.log('Parsed: ', suggestedCollection)
 }
 
 /**
@@ -29,12 +28,35 @@ function encodeStyle (collection: Suggestion): void {
   window.location.hash = encodedStyle
   applyPreSelectedStyle(hash)
   editSharedUrl(hash).catch(error => { console.log(error) })
-  console.log('Encoded: ', hash)
 }
 
-function applyPreSelectedStyle (encodedCollection: string) {
+/**
+ * Click on a selected button based of the data-type & data-id
+ * @param {object} dataId
+ * @returns {void}
+ */
+function clickButton (dataId: object): void {
+  const selectButton: HTMLButtonElement = document.querySelector(`input[data-id="${dataId}"]`)
+  selectButton.click()
+}
+
+/**
+ * Apply the pre-existing style
+ * @param {string} [encodedCollection]
+ */
+function applyPreSelectedStyle (encodedCollection?: string): void {
   const decodedStyle: string = atob(encodedCollection)
-  console.log('Decoded: ', decodedStyle)
+  const parsedStyle: object = JSON.parse(decodedStyle)
+
+  if (preSelectedStyleExist()) {
+    const styleEntries: Array<object> = Object.entries(parsedStyle)
+    const propertyIndex: number = 1
+
+    styleEntries.forEach((entry: Array<any>) => {
+      const entryPropId: object = entry[propertyIndex].id
+      clickButton(entryPropId)
+    })
+  }
 }
 
 /**
@@ -43,7 +65,7 @@ function applyPreSelectedStyle (encodedCollection: string) {
  * @returns {boolean}
  */
 function preSelectedStyleExist (): boolean {
-  return window.location.hash === ''
+  return window.location.hash !== ''
 }
 
 /**
@@ -62,5 +84,6 @@ async function editSharedUrl (url: string): Promise<void> {
 export {
   suggestedCollection,
   currentlyPickedStyle,
-  preSelectedStyleExist
+  preSelectedStyleExist,
+  applyPreSelectedStyle
 }

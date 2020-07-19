@@ -14,7 +14,7 @@ interface TargetDataset extends EventTarget {
  */
 async function addPublishSection (): Promise<void> {
   const publishSection: Element = document.createElement('blockquote')
-  const publishSectionClassList: Array<string> = ['blockquote', 'text-center', 'mb-3', 'mt-3', 'container']
+  const publishSectionClassList: Array<string> = ['blockquote', 'text-center', 'mb-3', 'mt-3', 'container', 'p-3']
 
   publishSectionClassList.forEach((element: string) => {
     publishSection.classList.add(element)
@@ -25,7 +25,8 @@ async function addPublishSection (): Promise<void> {
   if (selectedItems.childNodes.length !== 0 && document.getElementById(publishSectionId) === null) {
     selectedItems.parentElement.parentElement.appendChild(publishSection)
 
-    //* A weird bug occurs when loading the page with dev tool open, the paragraph doesn't fully render
+    //* A weird bug occurs when loading the page with dev tool open on Safari,
+    //* the paragraph doesn't fully render
     if (combinationLead !== null) {
       combinationLead.remove()
     }

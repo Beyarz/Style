@@ -25,6 +25,7 @@ const selectedItems: Element = document.getElementById('selected-items')
 const combinationLead: Element = document.getElementById('combination-lead')
 const publishSectionId: string = 'publish-section'
 const sharedUrlId: string = 'shared-url'
+const sharedCollectionHash: string = window.location.hash.replace(/#/g, '')
 
 export {
   items,
@@ -34,5 +35,6 @@ export {
   selectedItems,
   combinationLead,
   publishSectionId,
-  sharedUrlId
+  sharedUrlId,
+  sharedCollectionHash
 }
