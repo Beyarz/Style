@@ -9,18 +9,24 @@ interface TargetDataset extends EventTarget {
   }
 }
 
+interface ElementDataset extends Element {
+  dataset: {
+    type: string
+  }
+}
+
 /**
  * @returns {Promise<void>}
  */
 async function addPublishSection (): Promise<void> {
-  const publishSection: Element = document.createElement('blockquote')
-  const publishSectionClassList: Array<string> = ['blockquote', 'text-center', 'mb-3', 'mt-3', 'container', 'p-3']
+  const publishSection: Element = document.createElement('input')
+  publishSection.setAttribute('id', publishSectionId)
 
+  const publishSectionClassList: Array<string> = ['form-control', 'mb-5', 'mt-5']
   publishSectionClassList.forEach((element: string) => {
     publishSection.classList.add(element)
   })
 
-  publishSection.setAttribute('id', publishSectionId)
 
   if (selectedItems.childNodes.length !== 0 && document.getElementById(publishSectionId) === null) {
     selectedItems.parentElement.parentElement.appendChild(publishSection)
@@ -32,9 +38,12 @@ async function addPublishSection (): Promise<void> {
     }
   }
 
-  const sharedUrl: Element = document.createElement('a')
-  sharedUrl.setAttribute('id', sharedUrlId)
-  publishSection.appendChild(sharedUrl)
+  // document.getElementById(publishSectionId).parentElement.innerHTML = `<div class="input-group mb-3">
+  //   <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  //   <div class="input-group-append" data-clipboard-target="#foo">
+  //     <span class="input-group-text" id="basic-addon2">@example.com</span>
+  //   </div>
+  // </div>`
 }
 
 /**
@@ -59,7 +68,7 @@ export default async function addButtonSelectionListeners (): Promise<void> {
       const labelTagIndex: number = 3
 
       // Remove previously selected item from the same type
-      selectedItems.childNodes.forEach((element: Element) => {
+      selectedItems.childNodes.forEach((element: ElementDataset) => {
         if (element.dataset.type === chosenType) {
           element.remove()
         }

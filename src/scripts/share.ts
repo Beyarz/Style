@@ -1,4 +1,4 @@
-import { ItemsProperty, Suggestion, sharedUrlId } from './helper'
+import { ItemsProperty, Suggestion, sharedUrlId, publishSectionId } from './helper'
 
 const suggestedCollection: Suggestion = {}
 
@@ -74,10 +74,11 @@ function preSelectedStyleExist (): boolean {
  * @returns {Promise<void>}
  */
 async function editSharedUrl (url: string): Promise<void> {
-  const sharedUrl: Element = document.getElementById(sharedUrlId)
+  const sharedUrl: Element = document.getElementById(publishSectionId)
   const formattedUrl: string = window.location.origin + '/' + '#' + url
 
   sharedUrl.setAttribute('href', formattedUrl)
+  sharedUrl.setAttribute('value', formattedUrl)
   sharedUrl.textContent = 'Share me!'
 }
 
