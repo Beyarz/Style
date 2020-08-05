@@ -35,7 +35,7 @@ class Card {
   public display (type: string = this.type): void {
     const typeLayout: Element = document.getElementById(type)
     const typeItem: string = this.createByTemplate()
-    const typeNode: Element = document.createElement('li')
+    const typeNode: HTMLElement = document.createElement('li')
 
     const classes: Array<string> = ['list-group-item', 'no-border', 'mb-3']
     classes.forEach((element: string): void => {

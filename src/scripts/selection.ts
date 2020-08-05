@@ -1,4 +1,11 @@
-import { selectorRadioButton, selectedItems, combinationLead, publishSectionId, sharedUrlId } from './helper'
+import {
+  selectorRadioButton,
+  selectedItems,
+  combinationLead,
+  publishSectionId,
+  parentCopyButtonId,
+  shareContainerId
+} from './helper'
 import { currentlyPickedStyle } from './share'
 
 interface TargetDataset extends EventTarget {
@@ -19,31 +26,34 @@ interface ElementDataset extends Element {
  * @returns {Promise<void>}
  */
 async function addPublishSection (): Promise<void> {
+  const linkContainer: Element = document.createElement('div')
+  linkContainer.setAttribute('class', 'input-group mb-3')
+
   const publishSection: Element = document.createElement('input')
   publishSection.setAttribute('id', publishSectionId)
+  publishSection.setAttribute('type', 'text')
+  publishSection.setAttribute('class', 'form-control')
+  publishSection.setAttribute('placeholder', 'Loading url...')
 
-  const publishSectionClassList: Array<string> = ['form-control', 'mb-5', 'mt-5']
-  publishSectionClassList.forEach((element: string) => {
-    publishSection.classList.add(element)
-  })
+  const copyButtonContainer: Element = document.createElement('div')
+  copyButtonContainer.innerHTML = `<div class="input-group mb-3" id="${shareContainerId}">
+                                      <div class="input-group-append" id="${parentCopyButtonId}"></div>
+                                    </div>`
 
+  const copyButton: Element = document.createElement('button')
+  copyButton.setAttribute('class', 'btn btn-outline-secondary')
+  copyButton.setAttribute('data-clipboard-target', `#${publishSectionId}`)
+  copyButton.textContent = 'Copy'
 
   if (selectedItems.childNodes.length !== 0 && document.getElementById(publishSectionId) === null) {
-    selectedItems.parentElement.parentElement.appendChild(publishSection)
-
-    //* A weird bug occurs when loading the page with dev tool open on Safari,
-    //* the paragraph doesn't fully render
+    // selectedItems.parentElement.parentElement.appendChild(publishSection)
+    selectedItems.parentElement.parentElement.appendChild(copyButtonContainer)
+    document.getElementById(parentCopyButtonId).appendChild(copyButton)
+    document.getElementById(shareContainerId).appendChild(publishSection)
     if (combinationLead !== null) {
       combinationLead.remove()
     }
   }
-
-  // document.getElementById(publishSectionId).parentElement.innerHTML = `<div class="input-group mb-3">
-  //   <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  //   <div class="input-group-append" data-clipboard-target="#foo">
-  //     <span class="input-group-text" id="basic-addon2">@example.com</span>
-  //   </div>
-  // </div>`
 }
 
 /**
