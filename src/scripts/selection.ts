@@ -35,7 +35,7 @@ async function addPublishSection (): Promise<void> {
   const publishSection: Element = document.createElement('input')
   publishSection.setAttribute('id', publishSectionId)
   publishSection.setAttribute('type', 'text')
-  publishSection.setAttribute('class', 'form-control')
+  publishSection.setAttribute('class', 'form-control radius-left')
   publishSection.setAttribute('placeholder', 'Loading url...')
 
   const copyButton: Element = document.createElement('button')
@@ -49,7 +49,7 @@ async function addPublishSection (): Promise<void> {
   copyButton.textContent = 'Copy'
 
   const shareButton: Element = document.createElement('button')
-  shareButton.setAttribute('class', 'btn btn-outline-secondary input-group-text')
+  shareButton.setAttribute('class', 'btn btn-outline-secondary input-group-text radius-right')
   shareButton.addEventListener('click', (copyEvent: Event) => {
     const copyContent: string = copyEvent.target.baseURI
     navigator.clipboard.writeText(copyContent)

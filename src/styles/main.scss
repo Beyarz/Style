@@ -24,6 +24,7 @@ body {
 
 .card {
   padding: 3rem;
+  border-radius: 1rem;
   border-width: 0px 0px 0px 0px;
   border-color: white;
   border-style: solid;
@@ -32,6 +33,14 @@ body {
   &:hover {
     box-shadow: 0px 12px 26px 0px var(--box-shadow-hover);
   }
+}
+
+.radius-right {
+  border-radius: 0 1rem 1rem 0
+}
+
+.radius-left {
+  border-radius: 1rem 0 0 1rem
 }
 
 .container {
@@ -43,11 +52,9 @@ body {
 }
 
 .btn {
-  border-radius: 1rem;
-
-
   &:hover {
-    background-color: rgba(0, 0, 0, 0.25);
+    color: gray;
+    background-color: #dee1e4;
   }
 }
 
