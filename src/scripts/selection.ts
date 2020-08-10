@@ -29,7 +29,7 @@ interface ElementDataset extends Element {
 async function addPublishSection (): Promise<void> {
   const copyButtonContainer: Element = document.createElement('div')
   copyButtonContainer.innerHTML = `<div class="input-group mb-3 mt-3" id="${shareContainerId}">
-                                      <div class="input-group-append container-fluid" id="${parentCopyButtonId}"></div>
+                                      <div class="input-group-append input-group-lg container-fluid" id="${parentCopyButtonId}"></div>
                                     </div>`
 
   const publishSection: Element = document.createElement('input')
