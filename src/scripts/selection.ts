@@ -39,7 +39,7 @@ async function addPublishSection (): Promise<void> {
   publishSection.setAttribute('placeholder', 'Loading url...')
 
   const copyButton: Element = document.createElement('button')
-  copyButton.setAttribute('class', 'btn btn-outline-secondary')
+  copyButton.setAttribute('class', 'btn btn-outline-secondary input-group-text')
   copyButton.addEventListener('click', (copyEvent: Event) => {
     console.log(copyEvent)
     console.log(copyEvent.target.baseURI)
@@ -48,10 +48,29 @@ async function addPublishSection (): Promise<void> {
   })
   copyButton.textContent = 'Copy'
 
+  const shareButton: Element = document.createElement('button')
+  shareButton.setAttribute('class', 'btn btn-outline-secondary input-group-text')
+  shareButton.addEventListener('click', (copyEvent: Event) => {
+    const copyContent: string = copyEvent.target.baseURI
+    navigator.clipboard.writeText(copyContent)
+
+    navigator
+      .share({
+          title: document.title,
+          text: 'My collection title\n',
+          url: copyContent
+      })
+      .catch(err => console.error(err));
+  })
+  shareButton.textContent = 'Share'
+
   if (selectedItems.childNodes.length !== 0 && document.getElementById(publishSectionId) === null) {
     selectedItems.parentElement.parentElement.appendChild(copyButtonContainer)
+
     document.getElementById(parentCopyButtonId).appendChild(publishSection)
     document.getElementById(parentCopyButtonId).appendChild(copyButton)
+    document.getElementById(parentCopyButtonId).appendChild(shareButton)
+
     if (combinationLead !== null) {
       combinationLead.remove()
     }
