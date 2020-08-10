@@ -1,4 +1,4 @@
-import { ItemsProperty, Suggestion, sharedUrlId, publishSectionId } from './helper'
+import { ItemsProperty, Suggestion, publishSectionId } from './helper'
 
 const suggestedCollection: Suggestion = {}
 
@@ -35,7 +35,7 @@ function encodeStyle (collection: Suggestion): void {
  * @param {object} dataId
  * @returns {void}
  */
-function clickButton (dataId: object): void {
+function clickOn (dataId: object): void {
   const selectButton: HTMLButtonElement = document.querySelector(`input[data-id="${dataId}"]`)
   selectButton.click()
 }
@@ -54,7 +54,7 @@ function applyPreSelectedStyle (encodedCollection?: string): void {
 
     styleEntries.forEach((entry: Array<any>) => {
       const entryPropId: object = entry[propertyIndex].id
-      clickButton(entryPropId)
+      clickOn(entryPropId)
     })
   }
 }
@@ -79,7 +79,6 @@ async function editSharedUrl (url: string): Promise<void> {
 
   sharedUrl.setAttribute('href', formattedUrl)
   sharedUrl.setAttribute('value', formattedUrl)
-  sharedUrl.textContent = 'Share me!'
 }
 
 export {

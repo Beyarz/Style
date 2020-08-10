@@ -1,4 +1,5 @@
 import { ItemsPropertyList } from './helper'
+import { composeURL } from './config'
 
 class Card {
   type: string
@@ -20,10 +21,11 @@ class Card {
    * @memberof Card
    */
   private createByTemplate (type: string = this.type, src: string = this.src, id: string = this.id): string {
+    const composedSrc: string = composeURL(src)
     return `<div class="card">
-              <img src="${src}" class="card-img-top" alt="Image">
+              <img src="${composedSrc}" class="card-img-top" alt="Image">
               <label class="btn btn-light mt-4">
-                <input class="btn-group-toggle no-radio" type="radio" data-type="${type}" data-id="${id}" data-src="${src}">Select
+                <input class="btn-group-toggle no-radio" type="radio" data-type="${type}" data-id="${id}" data-src="${composedSrc}">Select
               </label>
             </div>`
   }

@@ -17,7 +17,17 @@ export interface Suggestion {
   }
 }
 
+interface ConfigInterface {
+  url: {
+    protocol: string
+    domain: string
+    extension: string
+  }
+}
+
 const items: ItemsPropertyList = require('../assets/items.json')
+const config: ConfigInterface = require('../assets/config.json')
+
 const unorderedList: HTMLCollection = document.getElementsByClassName('list-group list-group-horizontal')
 const root: Element = document.getElementById('layout-root')
 const selectorRadioButton: HTMLCollection = document.getElementsByClassName('no-radio')
@@ -30,6 +40,7 @@ const shareContainerId: string = 'input-share-field'
 
 export {
   items,
+  config,
   unorderedList,
   root,
   selectorRadioButton,

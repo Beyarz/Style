@@ -1,8 +1,8 @@
 {
   "jackets": {
     "src": [
-      "https1",
-      "https2"
+      "urlHostPathNameOnly1",
+      "urlHostPathNameOnly2"
     ],
     "id": [
       "jacket1",
@@ -12,8 +12,8 @@
 
   "shoes": {
     "src": [
-      "https1",
-      "https2"
+      "urlHostPathNameOnly1",
+      "urlHostPathNameOnly2"
     ],
     "id": [
       "shoes1",
