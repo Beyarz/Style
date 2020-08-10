@@ -7,6 +7,8 @@ import { ItemsPropertyList, root } from './helper'
  */
 function createLayout (type: string, stockSize: number): string {
   const firstLetter: number = 0
+
+  // Uppercase first letter
   const capitalizeType: string = type[firstLetter].toUpperCase() + type.slice(firstLetter + 1)
 
   return `<h1 class="text-muted">

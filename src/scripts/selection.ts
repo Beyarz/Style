@@ -6,6 +6,7 @@ import {
   parentCopyButtonId,
   shareContainerId
 } from './helper'
+
 import { currentlyPickedStyle } from './share'
 
 interface TargetDataset extends EventTarget {

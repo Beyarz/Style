@@ -57,9 +57,9 @@ class Card {
 function produceCards (contents: ItemsPropertyList): void {
   const entries = Object.entries(contents)
 
-  //* The first index of the item array is the type
-  //* The second index is an object with src & id property
-  entries.forEach(item => {
+  //* The first index is the type
+  //* The second index is object with src & id property
+  entries.forEach((item: [string, ItemsPropertyList]) => {
     const type: string = item[0]
     const srcProperty: Array<string> = item[1].src
     const idProperty: Array<string> = item[1].id
