@@ -26,8 +26,10 @@ interface ElementDataset extends Element {
  * @returns {Promise<void>}
  */
 async function addPublishSection (): Promise<void> {
-  const linkContainer: Element = document.createElement('div')
-  linkContainer.setAttribute('class', 'input-group mb-3')
+  const copyButtonContainer: Element = document.createElement('div')
+  copyButtonContainer.innerHTML = `<div class="input-group mb-3 mt-3" id="${shareContainerId}">
+                                      <div class="input-group-append container-fluid" id="${parentCopyButtonId}"></div>
+                                    </div>`
 
   const publishSection: Element = document.createElement('input')
   publishSection.setAttribute('id', publishSectionId)
@@ -35,21 +37,20 @@ async function addPublishSection (): Promise<void> {
   publishSection.setAttribute('class', 'form-control')
   publishSection.setAttribute('placeholder', 'Loading url...')
 
-  const copyButtonContainer: Element = document.createElement('div')
-  copyButtonContainer.innerHTML = `<div class="input-group mb-3" id="${shareContainerId}">
-                                      <div class="input-group-append" id="${parentCopyButtonId}"></div>
-                                    </div>`
-
   const copyButton: Element = document.createElement('button')
   copyButton.setAttribute('class', 'btn btn-outline-secondary')
-  copyButton.setAttribute('data-clipboard-target', `#${publishSectionId}`)
+  copyButton.addEventListener('click', (copyEvent: Event) => {
+    console.log(copyEvent)
+    console.log(copyEvent.target.baseURI)
+    const copyContent: string = copyEvent.target.baseURI
+    navigator.clipboard.writeText(copyContent)
+  })
   copyButton.textContent = 'Copy'
 
   if (selectedItems.childNodes.length !== 0 && document.getElementById(publishSectionId) === null) {
-    // selectedItems.parentElement.parentElement.appendChild(publishSection)
     selectedItems.parentElement.parentElement.appendChild(copyButtonContainer)
+    document.getElementById(parentCopyButtonId).appendChild(publishSection)
     document.getElementById(parentCopyButtonId).appendChild(copyButton)
-    document.getElementById(shareContainerId).appendChild(publishSection)
     if (combinationLead !== null) {
       combinationLead.remove()
     }
