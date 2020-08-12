@@ -56,11 +56,11 @@ async function addPublishSection (): Promise<void> {
 
     navigator
       .share({
-          title: document.title,
-          text: 'My collection title\n',
-          url: copyContent
+        title: document.title,
+        text: 'My collection title\n',
+        url: copyContent
       })
-      .catch(err => console.error(err));
+      .catch(error => console.error(error))
   })
   shareButton.textContent = 'Share'
 
