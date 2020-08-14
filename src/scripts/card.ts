@@ -52,10 +52,10 @@ class Card {
 
 /**
  * @export
- * @param {ItemsPropertyList} contents
+ * @param {ItemsPropertyList} items
  */
-function produceCards (contents: ItemsPropertyList): void {
-  const entries = Object.entries(contents)
+function produceCards (items: ItemsPropertyList): void {
+  const entries = Object.entries(items)
 
   //* The first index is the type
   //* The second index is object with src & id property

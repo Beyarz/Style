@@ -14,7 +14,7 @@ class Engine {
    * @memberof Engine
    */
   constructor(srcPath: string) {
-    this.items = require(srcPath)
+    this.items = require(srcPath) || require('../assets/items.json')
     this.sharedCollectionHash = window.location.hash.replace(/#/g, '')
   }
 
