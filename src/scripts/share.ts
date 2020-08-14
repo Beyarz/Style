@@ -2,14 +2,16 @@ import { publishSectionId } from './helper'
 
 export interface ItemsProperty {
   src: string,
-  id: string
+  id: string,
+  // title: string
 }
 
 export interface Suggestion {
   type?: {
     id: string,
-    src: string
-  }
+    src: string,
+  },
+  // title?: string
 }
 
 const suggestedCollection: Suggestion = {}
@@ -20,11 +22,13 @@ const suggestedCollection: Suggestion = {}
  * @param {string} type
  * @param {ItemsProperty} style
  */
+// function currentlyPickedStyle (type: string, style: ItemsProperty, title: string = document.title): void {
 function currentlyPickedStyle (type: string, style: ItemsProperty): void {
   suggestedCollection[type] = {
     id: style.id,
-    src: style.src
+    src: style.src,
   }
+  // suggestedCollection.title = title
   encodeStyle(suggestedCollection)
 }
 
@@ -60,12 +64,15 @@ function applyPreSelectedStyle (encodedCollection?: string): void {
   const decodedStyle: string = atob(encodedCollection)
   const parsedStyle: object = JSON.parse(decodedStyle)
 
+  console.log(parsedStyle)
+
   if (preSelectedStyleExist()) {
     const styleEntries: Array<object> = Object.entries(parsedStyle)
     const propertyIndex: number = 1
 
     styleEntries.forEach((entry: Array<any>) => {
       const entryPropId: object = entry[propertyIndex].id
+      // console.log(entry)
       clickOn(entryPropId)
     })
   }

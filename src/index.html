@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="container mt-3" id="header">
-      <h1 class="display-3" contenteditable="true" onchange="console.log(event)">
+      <h1 class="display-3" contenteditable="true" onkeyup="document.title = this.innerText">
         Edit title
       </h1>
       <p class="lead mb-5 text-muted" contenteditable="true">Click here to describe your style</p>

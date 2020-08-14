@@ -42,8 +42,6 @@ async function addPublishSection (): Promise<void> {
   const copyButton: Element = document.createElement('button')
   copyButton.setAttribute('class', 'btn btn-outline-secondary input-group-text')
   copyButton.addEventListener('click', (copyEvent: Event) => {
-    // console.log(copyEvent)
-    // console.log(copyEvent.target.baseURI)
     const copyContent: string = copyEvent.target.baseURI
     navigator.clipboard.writeText(copyContent)
   })
@@ -58,7 +56,7 @@ async function addPublishSection (): Promise<void> {
     navigator
       .share({
         title: document.title,
-        text: 'My collection title\n',
+        text: `${document.title}\n`,
         url: copyContent
       })
       .catch(error => console.error(error))
@@ -109,6 +107,7 @@ export default async function addButtonSelectionListeners (): Promise<void> {
       chosenCard.lastChild.childNodes.item(labelTagIndex).remove()
       selectedItems.appendChild(chosenCard)
       addPublishSection()
+      // currentlyPickedStyle(chosenType, { src, id }, document.title)
       currentlyPickedStyle(chosenType, { src, id })
     })
   }
