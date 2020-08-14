@@ -23,7 +23,7 @@ class Card {
   private createByTemplate (type: string = this.type, src: string = this.src, id: string = this.id): string {
     const composedSrc: string = composeURL(src)
     return `<div class="container">
-              <img src="${composedSrc}" class="card card-img-top" alt="Image">
+              <img src="${composedSrc}" loading="lazy" class="card card-img-top" alt="${id}">
               <label class="card btn btn-light mt-4">
                 <input class="btn-group-toggle no-radio" type="radio" data-type="${type}" data-id="${id}" data-src="${composedSrc}">Select
               </label>
@@ -66,7 +66,7 @@ function produceCards (contents: ItemsPropertyList): void {
 
     for (let index = 0; index < srcProperty.length; index++) {
       const card = new Card(type, srcProperty[index], idProperty[index])
-      card.display()
+      card.display(type)
     }
   })
 }

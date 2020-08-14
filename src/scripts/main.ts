@@ -6,6 +6,7 @@ import { preSelectedStyleExist, applyPreSelectedStyle } from './share'
 
 generateLayout(items)
   .then((items: ItemsPropertyList): void => { produceCards(items) })
+
   .finally((): void => {
     addButtonSelectionListeners()
 
@@ -13,4 +14,5 @@ generateLayout(items)
       applyPreSelectedStyle(sharedCollectionHash)
     }
   })
+
   .catch((reason: string): void => { console.log(reason) })

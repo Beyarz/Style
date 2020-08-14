@@ -41,8 +41,8 @@ async function addPublishSection (): Promise<void> {
   const copyButton: Element = document.createElement('button')
   copyButton.setAttribute('class', 'btn btn-outline-secondary input-group-text')
   copyButton.addEventListener('click', (copyEvent: Event) => {
-    console.log(copyEvent)
-    console.log(copyEvent.target.baseURI)
+    // console.log(copyEvent)
+    // console.log(copyEvent.target.baseURI)
     const copyContent: string = copyEvent.target.baseURI
     navigator.clipboard.writeText(copyContent)
   })
