@@ -1,8 +1,15 @@
 import { produceCards } from './card'
-import { items, ItemsPropertyList, sharedCollectionHash } from './helper'
+
+import {
+  ItemsPropertyList,
+} from './helper'
+
 import { generateLayout } from './layout'
 import addButtonSelectionListeners from './selection'
 import { preSelectedStyleExist, applyPreSelectedStyle } from './share'
+
+const items: ItemsPropertyList = require('../assets/items.json')
+const sharedCollectionHash: string = window.location.hash.replace(/#/g, '')
 
 generateLayout(items)
   .then((items: ItemsPropertyList): void => { produceCards(items) })

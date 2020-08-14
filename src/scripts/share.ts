@@ -1,4 +1,16 @@
-import { ItemsProperty, Suggestion, publishSectionId } from './helper'
+import { publishSectionId } from './helper'
+
+export interface ItemsProperty {
+  src: string,
+  id: string
+}
+
+export interface Suggestion {
+  type?: {
+    id: string,
+    src: string
+  }
+}
 
 const suggestedCollection: Suggestion = {}
 

@@ -1,13 +1,14 @@
 import {
-  selectorRadioButton,
-  selectedItems,
-  combinationLead,
   publishSectionId,
-  parentCopyButtonId,
-  shareContainerId
 } from './helper'
 
 import { currentlyPickedStyle } from './share'
+
+const parentCopyButtonId: string = 'copy-button'
+const shareContainerId: string = 'input-share-field'
+const selectedItems: Element = document.getElementById('selected-items')
+const combinationLead: Element = document.getElementById('combination-lead')
+const selectorRadioButton: HTMLCollection = document.getElementsByClassName('no-radio')
 
 interface TargetDataset extends EventTarget {
   dataset?: {
