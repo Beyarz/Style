@@ -1,25 +1,39 @@
 import { produceCards } from './card'
-
-import {
-  ItemsPropertyList,
-} from './helper'
-
+import { ItemsPropertyList } from './helper'
 import { generateLayout } from './layout'
 import addButtonSelectionListeners from './selection'
 import { preSelectedStyleExist, applyPreSelectedStyle } from './share'
 
-const items: ItemsPropertyList = require('../assets/items.json')
-const sharedCollectionHash: string = window.location.hash.replace(/#/g, '')
+class Engine {
+  items: ItemsPropertyList
+  sharedCollectionHash: string
 
-generateLayout(items)
-  .then((items: ItemsPropertyList): void => { produceCards(items) })
+  /**
+   * Creates an instance of Engine.
+   * @param {string} srcPath
+   * @memberof Engine
+   */
+  constructor(srcPath: string) {
+    this.items = require(srcPath)
+    this.sharedCollectionHash = window.location.hash.replace(/#/g, '')
+  }
 
-  .finally((): void => {
-    addButtonSelectionListeners()
+  /**
+   * Renders the items
+   * @param {ItemsPropertyList} [items=this.items]
+   * @memberof Engine
+   */
+  public async renderItems(items: ItemsPropertyList = this.items) {
+    await generateLayout(items).catch((reason: string) => { console.log(reason) })
+
+    produceCards(items)
+    addButtonSelectionListeners().catch((reason: string) => { console.log(reason) })
 
     if (preSelectedStyleExist()) {
-      applyPreSelectedStyle(sharedCollectionHash)
+      applyPreSelectedStyle(this.sharedCollectionHash)
     }
-  })
+  }
+}
 
-  .catch((reason: string): void => { console.log(reason) })
+const app = new Engine('../assets/items.json')
+app.renderItems()
