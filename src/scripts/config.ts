@@ -1,4 +1,12 @@
-import { config } from './helper'
+interface ConfigInterface {
+  url: {
+    protocol: string
+    domain: string
+    extension: string
+  }
+}
+
+const config: ConfigInterface = require('../assets/config.json')
 
 const proto: string = config.url.protocol
 const domain: string = config.url.domain

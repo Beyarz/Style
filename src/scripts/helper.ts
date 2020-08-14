@@ -18,17 +18,7 @@ export interface Suggestion {
   }
 }
 
-interface ConfigInterface {
-  url: {
-    protocol: string
-    domain: string
-    extension: string
-  }
-}
-
 const items: ItemsPropertyList = require('../assets/items.json')
-const config: ConfigInterface = require('../assets/config.json')
-
 const sharedCollectionHash: string = window.location.hash.replace(/#/g, '')
 
 const unorderedList: HTMLCollection = document.getElementsByClassName('list-group list-group-horizontal')
@@ -43,7 +33,6 @@ const shareContainerId: string = 'input-share-field'
 
 export {
   items,
-  config,
 
   sharedCollectionHash,
 
